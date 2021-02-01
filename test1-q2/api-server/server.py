@@ -3,7 +3,7 @@ from flask import Flask, jsonify, make_response
 app = Flask(__name__)
 
 @app.route('/status', methods=['GET'])
-def getStatus():
+def get_status():
     info = {
         'version': os.getenv('VERSION'),
         'lastcommitsha': os.getenv('LAST_COMMIT_SHA'),
