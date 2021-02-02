@@ -23,7 +23,7 @@ stop: ## Stop and remove all running containers
 
 .PHONY: test
 test: ## Test the docker container
-	curl http://127.0.0.1:8000
+	curl http://localhost:8000	
 
 ##@ Misc
 .PHONY: help
