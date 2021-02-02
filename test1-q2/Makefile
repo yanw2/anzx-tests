@@ -6,6 +6,8 @@ SHELL := /bin/bash -o pipefail
 # default variables
 IMAGE_NAME = anz-status-api
 IMAGE_VERSION ?= $(shell git rev-parse --short HEAD)
+SERVER_VERSION ?= 1.0
+SERVER_PORT ?= 5000
 
 ##@ Entry Points
 .PHONY: build
@@ -15,7 +17,13 @@ build: ## Build docker image artifact
 
 .PHONY: run 
 run: ## Run API server image
-	docker run $(IMAGE_NAME):$(IMAGE_VERSION)
+	docker run -d -p $(SERVER_PORT):$(SERVER_PORT) \
+		-e PORT=$(SERVER_PORT) -e VERSION=$(SERVER_VERSION) -e LAST_COMMIT_SHA=$(IMAGE_VERSION) \
+		$(IMAGE_NAME):$(IMAGE_VERSION)
+
+.PHONY: stop
+stop: ## Stop and remove all running containers
+	docker container ls -a -q | xargs docker container stop | xargs docker rm
 
 ##@ Misc
 .PHONY: help
