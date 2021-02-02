@@ -1,7 +1,7 @@
 substitutions:
   _PROJECT_ID: 'wenjing-sandbox'
   _IMAGE_NAME: 'anz-status-api'
-  _IMAGE_VERSION: $COMMIT_SHA
+  _IMAGE_VERSION: $COMMIT_SHA_SHORT
   _WORKSPACE: 'test1-q2'
   # _SERVER_VERSION: '1.0'
   # _SERVER_PORT: '5000'
