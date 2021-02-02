@@ -25,6 +25,10 @@ run: ## Run API server image
 stop: ## Stop and remove all running containers
 	docker container ls -a -q | xargs docker container stop | xargs docker rm
 
+.PHONY: test
+test: ## Run unit test cases
+	python src/server_test.py
+
 .PHONY: submit
 submit: ## Submit the build to Cloud Build
 	gcloud builds submit --config cloudbuild.yaml --substitutions=_IMAGE_VERSION=$(IMAGE_VERSION)
