@@ -1,7 +1,7 @@
 substitutions:
   _PROJECT_ID: 'wenjing-sandbox'
   _IMAGE_NAME: 'anz-status-api'
-  _WORKSPACE: 'anzx-tests-preps/test1q2'
+  _WORKSPACE: 'test1-q2'
   # _SERVER_VERSION: '1.0'
   # _SERVER_PORT: '5000'
 
