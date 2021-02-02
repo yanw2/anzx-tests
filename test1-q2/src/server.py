@@ -4,8 +4,8 @@ app = Flask(__name__)
 
 @app.route('/status', methods=['GET'])
 def get_status():
-    info = {
-        'version': os.getenv('VERSION'),
+    info = {?!?jedi=0, ?!?                      (*_*key: str*_*, default: _T) ?!?jedi?!?
+        'version': os.getenv('VER?!?jedi=1, SION'),?!? (*_*key: str*_*) ?!?jedi?!?'
         'lastcommitsha': os.getenv('LAST_COMMIT_SHA'),
         'description': 'pre-interview technical test'
     }
