@@ -7,19 +7,15 @@ SHELL := /bin/bash -o pipefail
 IMAGE_NAME = anz-status-api
 IMAGE_VERSION ?= $(shell git rev-parse --short HEAD)
 
-# docker calls
-CMD = docker run $(IMAGE_NAME):$(IMAGE_VERSION)
-
 ##@ Entry Points
 .PHONY: build
 build: ## Build docker image artifact
 	docker build -f Dockerfile . -t $(IMAGE_NAME)
 	docker tag $(IMAGE_NAME):latest $(IMAGE_NAME):$(IMAGE_VERSION)
 
-.PHONY: test
-test: ## Test the certifcate is located in the image
-	$(JAVA) ls -lah /etc/ssl/certs/java/cacerts
-	$(JAVA) cat /etc/ssl/certs/java/cacerts
+.PHONY: run 
+run: ## Run API server image
+	docker run $(IMAGE_NAME):$(IMAGE_VERSION)
 
 ##@ Misc
 .PHONY: help
