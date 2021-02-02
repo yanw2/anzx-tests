@@ -10,7 +10,7 @@ steps:
     args: ['build', '-f', 'Dockerfile', '-t', 'gcr.io/$_PROJECT_ID/$_IMAGE_NAME', '.']
     dir: $_WORKSPACE
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['tag', 'gcr.io/$_PROJECT_ID/$_IMAGE_NAME:latest', 'gcr.io/$_PROJECT_ID/$_IMAGE_NAME:$_IMAGE_VERSION']
+    args: ['tag', 'gcr.io/$_PROJECT_ID/$_IMAGE_NAME:latest', 'gcr.io/$_PROJECT_ID/$_IMAGE_NAME:$COMMIT_SHA']
 
 images:
   - 'gcr.io/$_PROJECT_ID/$_IMAGE_NAME:latest'
