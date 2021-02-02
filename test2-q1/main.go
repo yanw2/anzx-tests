@@ -19,8 +19,9 @@ func main() {
 	r.HandleFunc("/opt", opttruth)
 
 	s := &http.Server{
-		Handler:      r,
-		Addr:         "127.0.0.1:8000",
+		Handler: r,
+		Addr:    "0.0.0.0:8000",
+		//Addr:         "127.0.0.1:8000",
 		WriteTimeout: 15 * time.Second,
 		ReadTimeout:  15 * time.Second,
 	}
