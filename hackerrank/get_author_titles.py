@@ -1,13 +1,3 @@
-#!/bin/python
-
-import math
-import os
-import random
-import re
-import sys
-
-
-
 #
 # Complete the 'getArticleTitles' function below.
 #
@@ -28,13 +18,15 @@ def getArticleTitles(author):
     titles = []
 
     for page in range(1, total_page + 1):
-        content = requests.get(url + '{}&amp;page={}'.format(author, page)).json()
-        if total_page > 1:
+        content = requests.get(url + '{}&page={}'.format(author, page)).json()
+        
+        if total_page > 1 and total_page - page > 0:
             nav_range = per_page
+        elif total_page > 1 and total_page - page == 0:
+            nav_range = content['total'] - per_page * (page - 1)
         else:
             nav_range = content['total']
-        print(content['total'])
-        print(nav_range)
+
         for per_p in range(nav_range):
             title = content['data'][per_p]['title']
             story_title = content['data'][per_p]['story_title']
@@ -51,3 +43,4 @@ if __name__ == '__main__':
     titles = getArticleTitles('coloneltcb')
     #titles = getArticleTitles('epaga')
     print(titles)
+    #print(sorted(titles))
