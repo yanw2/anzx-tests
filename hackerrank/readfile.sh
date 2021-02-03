@@ -24,9 +24,13 @@ sum=0
 
 byte_array=($(awk '{ print $NF }' hosts.txt))
 for byte in "${byte_array[@]}"; do
-  echo ">>> $byte"
+  if [ "$byte" -gt '5000' ]; then
+    ((counter++))
+    sum=$(($sum + $byte))
+  fi
 done
 
+# The code below runs too slow 
 #while IFS= read -r line; do
 #  byte_size=$(echo $line | awk '{print $NF}')
 #  if [ "$byte_size" -gt '5000' ]; then
